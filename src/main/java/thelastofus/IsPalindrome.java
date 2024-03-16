@@ -5,10 +5,21 @@ import java.util.Arrays;
 
 public class IsPalindrome {
     public boolean isPalindrome(int x) {
-        String s1 = String.valueOf(x);
-        StringBuilder sb = new StringBuilder();
-        sb.append(s1);
-        sb.reverse();
-        return s1.contentEquals(sb);
+        int inverted_number = 0;
+        int copy_of_x = x;
+        if(x == 0){
+            return false;
+        }
+        if(x < 0){
+            return false;
+        }
+        if(x % 10 == 0 && x != 0){
+            return false;
+        }
+        while(copy_of_x != 0){
+            inverted_number = inverted_number * 10 + copy_of_x % 10;
+            copy_of_x = copy_of_x / 10;
+        }
+        return inverted_number == x;
     }
 }
